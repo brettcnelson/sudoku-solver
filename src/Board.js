@@ -6,7 +6,7 @@ const Board = (props) => (
   <div className="Board">
   	{props.b.map((r,i)=>
   		<div className="Row" key={i}>{r.map((s,j)=>
-  			<Square key={j} val={s} />
+  			<Square key={j} val={s} change={props.change} />
   		)}</div>
   	)}
   </div>

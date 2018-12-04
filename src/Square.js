@@ -3,11 +3,10 @@ import './Square.css';
 
 const Square = (props) => {
 	var fw = {};
-	console.log(props)
 	if (props.val.bold) {
 		fw.fontWeight = 'bold';
 	}
-	  return (<div className="Square" style={fw}>{props.val.val}</div>);
+	  return (<input className="Square" style={fw} type={'text'} maxLength={1} value={props.val.val} onChange={(e)=>props.change(Number(e.target.value),props.val.p)} />);
 }
 
 export default Square;
