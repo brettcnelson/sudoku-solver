@@ -21,9 +21,6 @@ class App extends Component {
       var b = this.state.board.map((r,i)=>r.map((s,j)=>{return{val:res[i][j],p:s.p,bold:s.bold}}));
       this.setState({board:b});
     }
-    else {
-      alert('no solution');
-    }
   }
 
   changeSquare(v,p) {
