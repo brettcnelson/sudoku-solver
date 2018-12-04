@@ -1,0 +1,13 @@
+.boardWrapper {
+	display:inline-block;
+}
+
+.Board {
+	display:grid;
+	grid-template-columns:repeat(9,1fr);
+	/*width:50%;*/
+}
+
+.Row {
+
+}
