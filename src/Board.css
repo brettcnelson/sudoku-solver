@@ -1,13 +1,11 @@
-.boardWrapper {
-	display:inline-block;
-}
-
 .Board {
-	display:grid;
-	grid-template-columns:repeat(9,1fr);
-	/*width:50%;*/
+	display:inline-block;
+	margin:auto;
+	margin-bottom:2%;
 }
 
 .Row {
-
+	display:grid;
+	grid-template-columns:repeat(9,3vw);
+	height:3vw;
 }

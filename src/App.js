@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   cleanBoard() {
-    return new Array(9).fill(1).map((r,i)=>new Array(9).fill(1).map((s,j)=>Math.ceil(Math.random()*200)));
+    return new Array(9).fill(1).map((r,i)=>new Array(9).fill(1).map((s,j)=>{return{val:'',p:[i,j],bold:false}}));
   }
 
   clear() {
