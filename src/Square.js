@@ -4,9 +4,14 @@ import './Square.css';
 const Square = (props) => {
 	var fw = {};
 	if (props.val.bold) {
+		fw.background = 'black';
 		fw.fontWeight = 'bold';
+		fw.color = 'white';
 	}
-	  return (<input className="Square" style={fw} type={'text'} maxLength={1} value={props.val.val} onChange={(e)=>props.change(Number(e.target.value),props.val.p)} />);
+	if (props.val.p[1]===2||props.val.p[1]===5) {
+		fw.borderRight= '2px solid black';
+	}
+	return (<input className="Square" style={fw} type={'text'} maxLength={1} value={props.val.val} onChange={(e)=>props.change(Number(e.target.value),props.val.p)} />);
 }
 
 export default Square;

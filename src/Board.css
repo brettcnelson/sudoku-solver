@@ -1,11 +1,10 @@
 .Board {
 	display:inline-block;
-	margin:auto;
 	margin-bottom:2%;
 }
 
 .Row {
 	display:grid;
-	grid-template-columns:repeat(9,3vw);
-	height:3vw;
+	grid-template-columns:repeat(9,50px);
+	height:50px;
 }

@@ -26,7 +26,7 @@ class App extends Component {
   changeSquare(v,p) {
     var b = this.state.board;
     b[p[0]][p[1]].val = v>0?v:'';
-    b[p[0]][p[1]].bold = true;
+    b[p[0]][p[1]].bold = v>0?true:false;
     this.setState({board:b});
   }
 
@@ -35,8 +35,8 @@ class App extends Component {
       <div className="App">
         <Board b={this.state.board} change={(v,p)=>this.changeSquare(v,p)}/>
         <div>
-          <button onClick={()=>this.solve()}>solve</button>
-          <button onClick={()=>this.setState({board:this.cleanBoard()})}>clear</button>
+          <button className="button" onClick={()=>this.solve()}>solve</button>
+          <button className="button" onClick={()=>this.setState({board:this.cleanBoard()})}>clear</button>
         </div>
       </div>
     );
