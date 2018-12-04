@@ -1,17 +1,14 @@
 function s(b) {
-  function shuffle(a) {
-    a.forEach((v,i)=>a.push(a.splice(Math.random()*(a.length-i),1)[0]));
-    return a;
-  }
+  var tries = 0;
   b = b.map(r=>r.map(s=>s===''?shuffle([1,2,3,4,5,6,7,8,9]):[s]));
   for (var i = 0 ; i < b.length ; i++) {
     for (var j = 0 ; j < b.length ; j++) {
       if (b[i][j].length===1 && !goodBoard(i,j)) {
-        alert('invalid board');
-        return;
+        return {tries,b:'  --  invalid board'};
       }
     }
   }
+  var stop = false;
   (function prune() {
     var changed = 0;
     (function rec(i,r,c) {
@@ -22,7 +19,7 @@ function s(b) {
         rec(i+1,c<6?r:r+3,c<6?c+3:0);
       }
     }(0,0,0));
-    if (changed) {
+    if (changed && !stop) {
       prune();
     }
     function trim(a) {
@@ -58,14 +55,21 @@ function s(b) {
           changed++;
         }
       }
+      if (!stop) {
+        stop = ![1,2,3,4,5,6,7,8,9].every(v=>a.reduce((o,s)=>o.concat(b[s[0]][s[1]]),[]).some(n=>n===v));
+      }
     }
   }());
+  if (stop) {
+    return {tries,b:'  --  no solution'};
+  }
   return (function step(i,j) {
     var res;
     var c = b[i][j].slice();
     for (var n = 0 ; n < c.length ; n++) {
       b[i][j] = [c[n]];
       if (goodBoard(i,j)) {
+        tries++;
         if (j<8) {
           res = step(i,j+1);
           if (res) {return res}
@@ -75,12 +79,16 @@ function s(b) {
           if (res) {return res}
         }
         else {
-          return b.map(r=>r.map(s=>s[0]));
+          return {tries,b};
         }
       }
     }
     b[i][j] = c;
-  }(0,0));
+  }(0,0)) || {tries,b:'  --  no solution'};
+  function shuffle(a) {
+    a.forEach((v,i)=>a.push(a.splice(Math.random()*(a.length-i),1)[0]));
+    return a;
+  }
   function goodBoard(i,j) {
     return check(row(i)) && check(column(j)) && check(grid(i,j));
     function check(a) {
