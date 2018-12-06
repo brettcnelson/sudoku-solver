@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       board:this.cleanBoard(),
-      tries:''
+      tries:'attempts: 0'
     };
   }
 
@@ -42,7 +42,7 @@ class App extends Component {
         s.val = '';
       }
     }));
-    this.setState({tries:'',board:b});
+    this.setState({tries:'attempts: 0',board:b});
   }
 
   render() {
@@ -52,7 +52,7 @@ class App extends Component {
         <div>{this.state.tries}</div>
         <div>
           <button className="button" onClick={()=>this.solve()}>solve</button>
-          <button className="button" onClick={()=>this.setState({board:this.cleanBoard(),tries:''})}>clear</button>
+          <button className="button" onClick={()=>this.setState({board:this.cleanBoard(),tries:'attempts: 0'})}>clear</button>
           <button className="button" onClick={()=>this.undo()}>undo solution</button>
         </div>
       </div>
