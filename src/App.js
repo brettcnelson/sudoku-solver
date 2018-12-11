@@ -12,6 +12,11 @@ class App extends Component {
     };
   }
 
+  hardBoard() {
+    var hb =  [[0,0,8],[1,2,3],[1,3,6],[2,1,7],[2,4,9],[2,6,2],[3,1,5],[3,5,7],[4,4,4],[4,5,5],[4,6,7],[5,3,1],[5,7,3],[6,2,1],[6,7,6],[6,8,8],[7,2,8],[7,3,5],[7,7,1],[8,1,9],[8,6,4]];
+    this.setState({board:this.cleanBoard()},()=>hb.forEach(v=>this.changeSquare(v[2],v.slice(0,2))));
+  }
+
   cleanBoard() {
     return new Array(9).fill(1).map((r,i)=>new Array(9).fill(1).map((s,j)=>{return{val:'',p:[i,j],bold:false}}));
   }
@@ -55,6 +60,7 @@ class App extends Component {
           <button className="button" onClick={()=>this.setState({board:this.cleanBoard(),tries:'attempts: 0'})}>clear</button>
           <button className="button" onClick={()=>this.undo()}>undo solution</button>
         </div>
+        <button className="button" onClick={()=>this.hardBoard()}>HARD</button>
       </div>
     );
   }
