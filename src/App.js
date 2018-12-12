@@ -60,7 +60,7 @@ class App extends Component {
           <button className="button" onClick={()=>this.setState({board:this.cleanBoard(),tries:'attempts: 0'})}>clear</button>
           <button className="button" onClick={()=>this.undo()}>undo solution</button>
         </div>
-        <button className="button" onClick={()=>this.hardBoard()}>HARD</button>
+        <button className="button" onClick={()=>this.hardBoard()}>HARD!</button>
       </div>
     );
   }
